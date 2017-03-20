@@ -1,5 +1,6 @@
 package com.example.android.tennisscore;
 
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -33,6 +34,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //portrait orientation only enable
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         setUpBtnAndTxt();
 
@@ -71,8 +75,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (scorePlayer1 == 3) {
             scoreBigPlayerOneTxt.setText("40");
             scoreSmallPlayerOneTxt.setText("40");
-        } else if ((scorePlayer1> 3) & ((scorePlayer1-scorePlayerTwo)>1)){
-            gamePlayerOne=gamePlayerOne+1;
+        } else if ((scorePlayer1 > 3) & ((scorePlayerTwo) < 3)) {
+            gamePlayerOne = gamePlayerOne + 1;
             gamePlayerOneTxt.setText(String.valueOf(gamePlayerOne));
             Toast.makeText(this, "Player 1 win game!", Toast.LENGTH_SHORT).show();
             scorePlayerOne = 0;
@@ -81,17 +85,59 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             scoreBigPlayerTwoTxt.setText("0");
             scoreSmallPlayerOneTxt.setText("0");
             scoreSmallPlayerTwoTxt.setText("0");
-        }else if ((scorePlayer1> 3) & (scorePlayerTwo>3)&(scorePlayer1>scorePlayerTwo)){
+            if ((gamePlayerOne>=6)&(gamePlayerOne-gamePlayerTwo>2)){
+                setPlayerOne=setPlayerOne+1;
+                setPlayerOneTxt.setText(String.valueOf(setPlayerOne));
+                Toast.makeText(this, "Player 1 win set!", Toast.LENGTH_SHORT).show();
+                scorePlayerOne = 0;
+                scorePlayerTwo = 0;
+                scoreBigPlayerOneTxt.setText("0");
+                scoreBigPlayerTwoTxt.setText("0");
+                scoreSmallPlayerOneTxt.setText("0");
+                scoreSmallPlayerTwoTxt.setText("0");
+                gamePlayerOne=0;
+                gamePlayerTwo=0;
+                gamePlayerOneTxt.setText("0");
+                gamePlayerTwoTxt.setText("0");
+
+            }
+        } else if ((scorePlayer1 > 3) & (scorePlayerTwo >= 3) & ((scorePlayer1 - scorePlayerTwo) == 1)) {
             scoreBigPlayerOneTxt.setText("AD");
             scoreSmallPlayerOneTxt.setText("AD");
             scoreBigPlayerTwoTxt.setText("");
             scoreSmallPlayerTwoTxt.setText("");
-        }else if ((scorePlayer1> 3) & (scorePlayerTwo>3)&(scorePlayer1==scorePlayerTwo)){
-            scoreBigPlayerOneTxt.setText("");
-            scoreSmallPlayerOneTxt.setText("");
-            scoreBigPlayerTwoTxt.setText("");
-            scoreSmallPlayerTwoTxt.setText("");}
-        else{}
+        } else if ((scorePlayer1 > 3) & (scorePlayerTwo > 3) & (scorePlayer1 == scorePlayerTwo)) {
+            scoreBigPlayerOneTxt.setText("D");
+            scoreSmallPlayerOneTxt.setText("DEUCE");
+            scoreBigPlayerTwoTxt.setText("D");
+            scoreSmallPlayerTwoTxt.setText("DEUCE");
+        } else if ((scorePlayer1 > 3) & (scorePlayerTwo >= 3) & ((scorePlayer1 - scorePlayerTwo) == 2)) {
+            gamePlayerOne = gamePlayerOne + 1;
+            gamePlayerOneTxt.setText(String.valueOf(gamePlayerOne));
+            Toast.makeText(this, "Player 1 win game!", Toast.LENGTH_SHORT).show();
+            scorePlayerOne = 0;
+            scorePlayerTwo = 0;
+            scoreBigPlayerOneTxt.setText("0");
+            scoreBigPlayerTwoTxt.setText("0");
+            scoreSmallPlayerOneTxt.setText("0");
+            scoreSmallPlayerTwoTxt.setText("0");
+            if ((gamePlayerOne>=6)&(gamePlayerOne-gamePlayerTwo>2)){
+                setPlayerOne=setPlayerOne+1;
+                setPlayerOneTxt.setText(String.valueOf(setPlayerOne));
+                Toast.makeText(this, "Player 1 win set!", Toast.LENGTH_SHORT).show();
+                scorePlayerOne = 0;
+                scorePlayerTwo = 0;
+                scoreBigPlayerOneTxt.setText("0");
+                scoreBigPlayerTwoTxt.setText("0");
+                scoreSmallPlayerOneTxt.setText("0");
+                scoreSmallPlayerTwoTxt.setText("0");
+                gamePlayerOne=0;
+                gamePlayerTwo=0;
+                gamePlayerOneTxt.setText("0");
+                gamePlayerTwoTxt.setText("0");
+
+            }
+        }
 
     }
 
@@ -105,9 +151,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (scorePlayer2 == 3) {
             scoreBigPlayerTwoTxt.setText("40");
             scoreSmallPlayerTwoTxt.setText("40");
-        } else if ((scorePlayer2== 4) & (scorePlayerOne<3)){
+        } else if ((scorePlayer2 == 4) & (scorePlayerOne < 3)) {
 
-            gamePlayerTwo=gamePlayerTwo+1;
+            gamePlayerTwo = gamePlayerTwo + 1;
             gamePlayerTwoTxt.setText(String.valueOf(gamePlayerTwo));
             Toast.makeText(this, "Player 2 win game!", Toast.LENGTH_SHORT).show();
             scorePlayerOne = 0;
@@ -116,11 +162,64 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             scoreBigPlayerTwoTxt.setText("0");
             scoreSmallPlayerOneTxt.setText("0");
             scoreSmallPlayerTwoTxt.setText("0");
-        }else {}
+
+            if ((gamePlayerTwo>=6)&(gamePlayerTwo-gamePlayerOne>2)){
+                setPlayerTwo=setPlayerTwo+1;
+                setPlayerTwoTxt.setText(String.valueOf(setPlayerTwo));
+                Toast.makeText(this, "Player 2 win set!", Toast.LENGTH_SHORT).show();
+                scorePlayerOne = 0;
+                scorePlayerTwo = 0;
+                scoreBigPlayerOneTxt.setText("0");
+                scoreBigPlayerTwoTxt.setText("0");
+                scoreSmallPlayerOneTxt.setText("0");
+                scoreSmallPlayerTwoTxt.setText("0");
+                gamePlayerOne=0;
+                gamePlayerTwo=0;
+                gamePlayerOneTxt.setText("0");
+                gamePlayerTwoTxt.setText("0");
+
+            }
 
 
+        } else if ((scorePlayer2 > 3) & (scorePlayerOne >= 3) & ((scorePlayer2 - scorePlayerOne) == 1)) {
+            scoreBigPlayerOneTxt.setText("");
+            scoreSmallPlayerOneTxt.setText("");
+            scoreBigPlayerTwoTxt.setText("AD");
+            scoreSmallPlayerTwoTxt.setText("AD");
+        } else if ((scorePlayer2 > 3) & (scorePlayerOne > 3) & (scorePlayer2 == scorePlayerOne)) {
+            scoreBigPlayerOneTxt.setText("D");
+            scoreSmallPlayerOneTxt.setText("DEUCE");
+            scoreBigPlayerTwoTxt.setText("D");
+            scoreSmallPlayerTwoTxt.setText("DEUCE");
+        } else if ((scorePlayer2 > 3) & (scorePlayerOne >= 3) & ((scorePlayer2 - scorePlayerOne) == 2)) {
+            gamePlayerTwo = gamePlayerTwo + 1;
+            gamePlayerTwoTxt.setText(String.valueOf(gamePlayerTwo));
+            Toast.makeText(this, "Player 2 win game!", Toast.LENGTH_SHORT).show();
+            scorePlayerOne = 0;
+            scorePlayerTwo = 0;
+            scoreBigPlayerOneTxt.setText("0");
+            scoreBigPlayerTwoTxt.setText("0");
+            scoreSmallPlayerOneTxt.setText("0");
+            scoreSmallPlayerTwoTxt.setText("0");
+
+            if ((gamePlayerTwo>=6)&(gamePlayerTwo-gamePlayerOne>2)){
+                setPlayerTwo=setPlayerTwo+1;
+                setPlayerTwoTxt.setText(String.valueOf(setPlayerTwo));
+                Toast.makeText(this, "Player 2 win set!", Toast.LENGTH_SHORT).show();
+                scorePlayerOne = 0;
+                scorePlayerTwo = 0;
+                scoreBigPlayerOneTxt.setText("0");
+                scoreBigPlayerTwoTxt.setText("0");
+                scoreSmallPlayerOneTxt.setText("0");
+                scoreSmallPlayerTwoTxt.setText("0");
+                gamePlayerOne=0;
+                gamePlayerTwo=0;
+                gamePlayerOneTxt.setText("0");
+                gamePlayerTwoTxt.setText("0");
+
+            }
+        }
     }
-
 
 
     private void gameReset() {
@@ -169,12 +268,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-
-    private void oneSecondPause(){
-        try {
-            Thread.sleep(1000); //Приостанавливает поток на 1 секунду
-        } catch (Exception e) {
-
-        }
-    }
 }
