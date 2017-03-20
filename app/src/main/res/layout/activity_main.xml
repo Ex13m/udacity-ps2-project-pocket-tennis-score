@@ -138,7 +138,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/textView13"
+                        android:id="@+id/setPlayerOnwTxt"
                         android:layout_width="30dp"
                         android:layout_height="match_parent"
                         android:layout_margin="2dp"
@@ -151,7 +151,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/textView12"
+                        android:id="@+id/gamePlayerOneTxt"
                         android:layout_width="30dp"
                         android:layout_height="match_parent"
                         android:layout_margin="2dp"
@@ -164,7 +164,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/textView11"
+                        android:id="@+id/scoreSmallPlayerOneTxt"
                         android:layout_width="30dp"
                         android:layout_height="match_parent"
                         android:layout_margin="2dp"
@@ -197,7 +197,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/textView17"
+                        android:id="@+id/setPlayerTwoTxt"
                         android:layout_width="30dp"
                         android:layout_height="match_parent"
                         android:layout_margin="2dp"
@@ -210,7 +210,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/textView16"
+                        android:id="@+id/gamePlayerTwoTxt"
                         android:layout_width="30dp"
                         android:layout_height="match_parent"
                         android:layout_margin="2dp"
@@ -223,7 +223,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/textView15"
+                        android:id="@+id/scoreSmallPlayerTwoTxt"
                         android:layout_width="30dp"
                         android:layout_height="match_parent"
                         android:layout_margin="2dp"
@@ -265,11 +265,10 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/scorePlayerOne"
+                    android:id="@+id/scoreBigPlayerOneTxt"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="15dp"
-
                     android:gravity="center"
                     android:text="0"
                     android:textColor="@android:color/background_light"
@@ -298,7 +297,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/scorePlayerTwo"
+                    android:id="@+id/scoreBigPlayerTwoTxt"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="bottom"
@@ -327,7 +326,7 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/playerOnePoint"
+                    android:id="@+id/playerOnePointBtn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#3949AB"
@@ -349,7 +348,7 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/playerTwoPoint"
+                    android:id="@+id/playerTwoPointBtn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#3949AB"
