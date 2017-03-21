@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">Tennis Score</string>
+    <string name="deuce">DEUCE</string>
+    <string name="fifteen">15</string>
+    <string name="thirty">30</string>
+    <string name="forty">40</string>
+    <string name="ad">AD</string>
+    <string name="pocket_tennis_score">Pocket Tennis Score</string>
+    <string name="player_3">PLAYER 3</string>
+    <string name="set">SET</string>
+    <string name="game">GAME</string>
+    <string name="score">SCORE</string>
+    <string name="player_1">PLAYER 1</string>
+    <string name="zero">0</string>
+    <string name="player_2">PLAYER 2</string>
+    <string name="player_1_normal">Player 1</string>
+    <string name="player_2_normal">Player 2</string>
+    <string name="point">point</string>
+    <string name="point_2">point</string>
+    <string name="reset">reset</string>
 </resources>

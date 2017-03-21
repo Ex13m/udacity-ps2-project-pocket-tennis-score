@@ -8,9 +8,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.reflect.Method;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-
+    // used variables and objects
     private int scorePlayerOne = 0;
     private int scorePlayerTwo = 0;
     private int gamePlayerOne = 0;
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //portrait orientation only enable
+    //portrait orientation is enable
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         setUpBtnAndTxt();
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+    //Reaction to button control.
     @Override
     public void onClick(View view) {
 
@@ -65,16 +68,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    //Method for calculating scoring points for player number one.
     private void displayForPlayerOne(int scorePlayer1) {
         if (scorePlayer1 == 1) {
-            scoreBigPlayerOneTxt.setText("15");
-            scoreSmallPlayerOneTxt.setText("15");
+            scoreBigPlayerOneTxt.setText(R.string.fifteen);
+            scoreSmallPlayerOneTxt.setText(R.string.fifteen);
         } else if (scorePlayer1 == 2) {
-            scoreBigPlayerOneTxt.setText("30");
-            scoreSmallPlayerOneTxt.setText("30");
+            scoreBigPlayerOneTxt.setText(R.string.thirty);
+            scoreSmallPlayerOneTxt.setText(R.string.thirty);
         } else if (scorePlayer1 == 3) {
-            scoreBigPlayerOneTxt.setText("40");
-            scoreSmallPlayerOneTxt.setText("40");
+            scoreBigPlayerOneTxt.setText(R.string.forty);
+            scoreSmallPlayerOneTxt.setText(R.string.forty);
         } else if ((scorePlayer1 > 3) & ((scorePlayerTwo) < 3)) {
             gamePlayerOne = gamePlayerOne + 1;
             gamePlayerOneTxt.setText(String.valueOf(gamePlayerOne));
@@ -85,8 +89,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             scoreBigPlayerTwoTxt.setText("0");
             scoreSmallPlayerOneTxt.setText("0");
             scoreSmallPlayerTwoTxt.setText("0");
-            if ((gamePlayerOne>=6)&(gamePlayerOne-gamePlayerTwo>2)){
-                setPlayerOne=setPlayerOne+1;
+            if ((gamePlayerOne >= 6) & ((gamePlayerOne - gamePlayerTwo) == 2)) {
+                setPlayerOne = setPlayerOne + 1;
                 setPlayerOneTxt.setText(String.valueOf(setPlayerOne));
                 Toast.makeText(this, "Player 1 win set!", Toast.LENGTH_SHORT).show();
                 scorePlayerOne = 0;
@@ -95,22 +99,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 scoreBigPlayerTwoTxt.setText("0");
                 scoreSmallPlayerOneTxt.setText("0");
                 scoreSmallPlayerTwoTxt.setText("0");
-                gamePlayerOne=0;
-                gamePlayerTwo=0;
+                gamePlayerOne = 0;
+                gamePlayerTwo = 0;
                 gamePlayerOneTxt.setText("0");
                 gamePlayerTwoTxt.setText("0");
 
             }
         } else if ((scorePlayer1 > 3) & (scorePlayerTwo >= 3) & ((scorePlayer1 - scorePlayerTwo) == 1)) {
-            scoreBigPlayerOneTxt.setText("AD");
-            scoreSmallPlayerOneTxt.setText("AD");
+            scoreBigPlayerOneTxt.setText(R.string.ad);
+            scoreSmallPlayerOneTxt.setText(R.string.ad);
             scoreBigPlayerTwoTxt.setText("");
             scoreSmallPlayerTwoTxt.setText("");
         } else if ((scorePlayer1 > 3) & (scorePlayerTwo > 3) & (scorePlayer1 == scorePlayerTwo)) {
             scoreBigPlayerOneTxt.setText("D");
-            scoreSmallPlayerOneTxt.setText("DEUCE");
+            scoreSmallPlayerOneTxt.setText(R.string.deuce);
             scoreBigPlayerTwoTxt.setText("D");
-            scoreSmallPlayerTwoTxt.setText("DEUCE");
+            scoreSmallPlayerTwoTxt.setText(R.string.deuce);
         } else if ((scorePlayer1 > 3) & (scorePlayerTwo >= 3) & ((scorePlayer1 - scorePlayerTwo) == 2)) {
             gamePlayerOne = gamePlayerOne + 1;
             gamePlayerOneTxt.setText(String.valueOf(gamePlayerOne));
@@ -121,8 +125,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             scoreBigPlayerTwoTxt.setText("0");
             scoreSmallPlayerOneTxt.setText("0");
             scoreSmallPlayerTwoTxt.setText("0");
-            if ((gamePlayerOne>=6)&(gamePlayerOne-gamePlayerTwo>2)){
-                setPlayerOne=setPlayerOne+1;
+            if ((gamePlayerOne >= 6) & (gamePlayerOne - gamePlayerTwo == 2)) {
+                setPlayerOne = setPlayerOne + 1;
                 setPlayerOneTxt.setText(String.valueOf(setPlayerOne));
                 Toast.makeText(this, "Player 1 win set!", Toast.LENGTH_SHORT).show();
                 scorePlayerOne = 0;
@@ -131,8 +135,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 scoreBigPlayerTwoTxt.setText("0");
                 scoreSmallPlayerOneTxt.setText("0");
                 scoreSmallPlayerTwoTxt.setText("0");
-                gamePlayerOne=0;
-                gamePlayerTwo=0;
+                gamePlayerOne = 0;
+                gamePlayerTwo = 0;
                 gamePlayerOneTxt.setText("0");
                 gamePlayerTwoTxt.setText("0");
 
@@ -141,16 +145,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    //Method for calculating scoring points for player number one.
     private void displayForPlayerTwo(int scorePlayer2) {
         if (scorePlayer2 == 1) {
-            scoreBigPlayerTwoTxt.setText("15");
-            scoreSmallPlayerTwoTxt.setText("15");
+            scoreBigPlayerTwoTxt.setText(R.string.fifteen);
+            scoreSmallPlayerTwoTxt.setText(R.string.fifteen);
         } else if (scorePlayer2 == 2) {
-            scoreBigPlayerTwoTxt.setText("30");
-            scoreSmallPlayerTwoTxt.setText("30");
+            scoreBigPlayerTwoTxt.setText(R.string.thirty);
+            scoreSmallPlayerTwoTxt.setText(R.string.thirty);
         } else if (scorePlayer2 == 3) {
-            scoreBigPlayerTwoTxt.setText("40");
-            scoreSmallPlayerTwoTxt.setText("40");
+            scoreBigPlayerTwoTxt.setText(R.string.forty);
+            scoreSmallPlayerTwoTxt.setText(R.string.forty);
         } else if ((scorePlayer2 == 4) & (scorePlayerOne < 3)) {
 
             gamePlayerTwo = gamePlayerTwo + 1;
@@ -163,8 +168,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             scoreSmallPlayerOneTxt.setText("0");
             scoreSmallPlayerTwoTxt.setText("0");
 
-            if ((gamePlayerTwo>=6)&(gamePlayerTwo-gamePlayerOne>2)){
-                setPlayerTwo=setPlayerTwo+1;
+            if ((gamePlayerTwo >= 6) & (gamePlayerTwo - gamePlayerOne == 2)) {
+                setPlayerTwo = setPlayerTwo + 1;
                 setPlayerTwoTxt.setText(String.valueOf(setPlayerTwo));
                 Toast.makeText(this, "Player 2 win set!", Toast.LENGTH_SHORT).show();
                 scorePlayerOne = 0;
@@ -173,8 +178,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 scoreBigPlayerTwoTxt.setText("0");
                 scoreSmallPlayerOneTxt.setText("0");
                 scoreSmallPlayerTwoTxt.setText("0");
-                gamePlayerOne=0;
-                gamePlayerTwo=0;
+                gamePlayerOne = 0;
+                gamePlayerTwo = 0;
                 gamePlayerOneTxt.setText("0");
                 gamePlayerTwoTxt.setText("0");
 
@@ -184,13 +189,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if ((scorePlayer2 > 3) & (scorePlayerOne >= 3) & ((scorePlayer2 - scorePlayerOne) == 1)) {
             scoreBigPlayerOneTxt.setText("");
             scoreSmallPlayerOneTxt.setText("");
-            scoreBigPlayerTwoTxt.setText("AD");
-            scoreSmallPlayerTwoTxt.setText("AD");
+            scoreBigPlayerTwoTxt.setText(R.string.ad);
+            scoreSmallPlayerTwoTxt.setText(R.string.ad);
         } else if ((scorePlayer2 > 3) & (scorePlayerOne > 3) & (scorePlayer2 == scorePlayerOne)) {
             scoreBigPlayerOneTxt.setText("D");
-            scoreSmallPlayerOneTxt.setText("DEUCE");
+            scoreSmallPlayerOneTxt.setText(R.string.deuce);
             scoreBigPlayerTwoTxt.setText("D");
-            scoreSmallPlayerTwoTxt.setText("DEUCE");
+            scoreSmallPlayerTwoTxt.setText(R.string.deuce);
         } else if ((scorePlayer2 > 3) & (scorePlayerOne >= 3) & ((scorePlayer2 - scorePlayerOne) == 2)) {
             gamePlayerTwo = gamePlayerTwo + 1;
             gamePlayerTwoTxt.setText(String.valueOf(gamePlayerTwo));
@@ -202,8 +207,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             scoreSmallPlayerOneTxt.setText("0");
             scoreSmallPlayerTwoTxt.setText("0");
 
-            if ((gamePlayerTwo>=6)&(gamePlayerTwo-gamePlayerOne>2)){
-                setPlayerTwo=setPlayerTwo+1;
+            if ((gamePlayerTwo >= 6) & (gamePlayerTwo - gamePlayerOne == 2)) {
+                setPlayerTwo = setPlayerTwo + 1;
                 setPlayerTwoTxt.setText(String.valueOf(setPlayerTwo));
                 Toast.makeText(this, "Player 2 win set!", Toast.LENGTH_SHORT).show();
                 scorePlayerOne = 0;
@@ -212,8 +217,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 scoreBigPlayerTwoTxt.setText("0");
                 scoreSmallPlayerOneTxt.setText("0");
                 scoreSmallPlayerTwoTxt.setText("0");
-                gamePlayerOne=0;
-                gamePlayerTwo=0;
+                gamePlayerOne = 0;
+                gamePlayerTwo = 0;
                 gamePlayerOneTxt.setText("0");
                 gamePlayerTwoTxt.setText("0");
 
@@ -221,7 +226,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-
+//Method for restarting the game.
     private void gameReset() {
         scorePlayerOne = 0;
         scorePlayerTwo = 0;
@@ -239,7 +244,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setPlayerTwoTxt.setText("0");
 
     }
-
+//The method searches for objects from by ID and connects them to the implements View.OnClickListener .
     private void setUpBtnAndTxt() {
 
         playerOnePointBtn = (Button) findViewById(R.id.playerOnePointBtn);
