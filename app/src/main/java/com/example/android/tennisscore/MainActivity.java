@@ -1,6 +1,10 @@
 package com.example.android.tennisscore;
 
 import android.content.pm.ActivityInfo;
+import android.content.res.AssetFileDescriptor;
+import android.content.res.AssetManager;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +16,7 @@ import android.widget.Toast;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 
+import java.io.IOException;
 import java.lang.reflect.Method;
 
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
@@ -38,6 +43,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView setPlayerOneTxt;
     private TextView setPlayerTwoTxt;
     private TextView appName;
+//Object fo work with sound
+    private SoundPool mSoundPool;
+    AssetManager mAssetManager;
+    int setSound,gameSound,resetSound;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+//  method for saving variables in memory before rotation
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt("scorePlayerOne", scorePlayerOne);
@@ -62,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         outState.putInt("setPlayerTwo", setPlayerTwo);
     }
 
+    //Method for extracting variables after rotation
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         scorePlayerOne = savedInstanceState.getInt("scorePlayerOne");
@@ -83,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startAnimationTitleApp(appName);
     }
 
-    //Reaction to button control.
+    //Reaction on button control.
     @Override
     public void onClick(View view) {
 
@@ -92,18 +105,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //Toast.makeText(this, "point for Player 1", Toast.LENGTH_SHORT).show();
                 scorePlayerOne = scorePlayerOne + 1;
                 displayForPlayerOne(scorePlayerOne);
+                //animation of app tittle
                 startAnimationBtn(playerOnePointBtn);
+                //sound after tap
+                playSound(setSound);
                 break;
             case R.id.playerTwoPointBtn:
                 //Toast.makeText(this, "point for Player 2", Toast.LENGTH_SHORT).show();
                 scorePlayerTwo = scorePlayerTwo + 1;
                 displayForPlayerTwo(scorePlayerTwo);
                 startAnimationBtn(playerTwoPointBtn);
+                playSound(gameSound);
                 break;
             case R.id.resetBtn:
                 Toast.makeText(this, "Game was reseted !", Toast.LENGTH_SHORT).show();
                 gameReset();
                 startAnimationBtn(resetBtn);
+                playSound(resetSound);
                 break;
 
         }
@@ -215,7 +233,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    //Method for calculating scoring points for player number one.
+    //Method for calculating scoring points for player number Two.
     private void displayForPlayerTwo(int scorePlayer2) {
         if (scorePlayer2 == 1) {
             scoreBigPlayerTwoTxt.setText(R.string.fifteen);
@@ -351,6 +369,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     //The method searches for objects from by ID and connects them to the implements View.OnClickListener .
+    //And SOUND setup
 
     private void setUpBtnAndTxt() {
 
@@ -378,6 +397,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         gamePlayerTwoTxt.setOnClickListener(this);
         setPlayerOneTxt.setOnClickListener(this);
         setPlayerTwoTxt.setOnClickListener(this);
+
+        //       ***************************
+        //        sound setup
+        mSoundPool = new SoundPool(3, AudioManager.STREAM_MUSIC, 0);
+        mAssetManager = getAssets();
+        setSound = loadSound("player1.ogg");
+        gameSound = loadSound("player2.ogg");
+        resetSound = loadSound("kassa.mp3");
+
     }
 
 
@@ -413,4 +441,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //************************************************************************
 
 
+//*********************************SOME SOUND*****************************
+    //Method for control sound file in TennisScore\app\src\main\assets
+    private int loadSound(String fileName) {
+        AssetFileDescriptor afd = null;
+        try {
+            afd = mAssetManager.openFd(fileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Couldn't load file '" + fileName + "'", Toast.LENGTH_SHORT).show();
+            return -1;
+        }
+        return mSoundPool.load(afd, 1);
+    }
+
+//    Method for play sound
+    protected void playSound(int sound) {
+        if (sound > 0)
+            mSoundPool.play(sound, 1, 1, 1, 0, 1);
+    }
+//***************************************************************************
 }
