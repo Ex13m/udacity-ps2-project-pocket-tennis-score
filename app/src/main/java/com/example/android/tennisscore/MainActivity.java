@@ -3,6 +3,7 @@ package com.example.android.tennisscore;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -48,8 +49,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         setUpBtnAndTxt();
         startAnimationTitleApp(appName);
+
     }
 
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("scorePlayerOne", scorePlayerOne);
+        outState.putInt("scorePlayerTwo", scorePlayerTwo);
+        outState.putInt("gamePlayerOne", gamePlayerOne);
+        outState.putInt("gamePlayerTwo", gamePlayerTwo);
+        outState.putInt("setPlayerOne", setPlayerOne);
+        outState.putInt("setPlayerTwo", setPlayerTwo);
+    }
+
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        scorePlayerOne = savedInstanceState.getInt("scorePlayerOne");
+        scorePlayerTwo = savedInstanceState.getInt("scorePlayerTwo");
+        gamePlayerOne = savedInstanceState.getInt("gamePlayerOne");
+        gamePlayerTwo = savedInstanceState.getInt("gamePlayerTwo");
+        setPlayerOne = savedInstanceState.getInt("setPlayerOne");
+        setPlayerTwo = savedInstanceState.getInt("setPlayerTwo");
+        scoreBigPlayerOneTxt.setText(String.valueOf(scorePlayerOne));
+        scoreBigPlayerTwoTxt.setText(String.valueOf(scorePlayerTwo));
+        scoreSmallPlayerOneTxt.setText(String.valueOf(scorePlayerOne));
+        scoreSmallPlayerTwoTxt.setText(String.valueOf(scorePlayerTwo));
+        gamePlayerOneTxt.setText(String.valueOf(gamePlayerOne));
+        gamePlayerTwoTxt.setText(String.valueOf(gamePlayerTwo));
+        setPlayerOneTxt.setText(String.valueOf(setPlayerOne));
+        setPlayerTwoTxt.setText(String.valueOf(setPlayerTwo));
+        displayForPlayerOne(scorePlayerOne);
+        displayForPlayerTwo(scorePlayerTwo);
+        startAnimationTitleApp(appName);
+    }
 
     //Reaction to button control.
     @Override
@@ -318,10 +350,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-
-
-
-
     //The method searches for objects from by ID and connects them to the implements View.OnClickListener .
 
     private void setUpBtnAndTxt() {
@@ -337,7 +365,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         gamePlayerTwoTxt = (TextView) findViewById(R.id.gamePlayerTwoTxt);
         setPlayerOneTxt = (TextView) findViewById(R.id.setPlayerOnwTxt);
         setPlayerTwoTxt = (TextView) findViewById(R.id.setPlayerTwoTxt);
-        appName=(TextView)findViewById(R.id.appName) ;
+        appName = (TextView) findViewById(R.id.appName);
 
         playerOnePointBtn.setOnClickListener(this);
         playerTwoPointBtn.setOnClickListener(this);
@@ -368,12 +396,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //
     }
 
-//Method for animated buttons
-   private void startAnimationBtn(View view) {YoYo.with(Techniques.FadeIn).playOn(view);}
-//Method for animated Game and Set View
-   private void startAnimationGameAndSetTxt(View view) {YoYo.with(Techniques.BounceInDown).playOn(view);}
+    //Method for animated buttons
+    private void startAnimationBtn(View view) {
+        YoYo.with(Techniques.FadeIn).playOn(view);
+    }
+
+    //Method for animated Game and Set View
+    private void startAnimationGameAndSetTxt(View view) {
+        YoYo.with(Techniques.BounceInDown).playOn(view);
+    }
+
     //Method for animated Title
-   private void startAnimationTitleApp(View view) {YoYo.with(Techniques.SlideInUp).playOn(view);}
+    private void startAnimationTitleApp(View view) {
+        YoYo.with(Techniques.SlideInUp).playOn(view);
+    }
 //************************************************************************
+
 
 }

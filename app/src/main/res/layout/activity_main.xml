@@ -18,7 +18,7 @@
         android:layout_marginRight="2dp"
         android:layout_marginTop="0dp"
         android:layout_weight="7"
-        android:background="#3949AB"
+        android:background="@color/colorField"
         android:orientation="vertical"></LinearLayout>
 
     <LinearLayout
@@ -32,7 +32,7 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="2dp"
             android:layout_weight="1"
-            android:background="#3949AB"
+            android:background="@color/colorField"
             android:orientation="vertical">
 
             <LinearLayout
@@ -110,7 +110,7 @@
                         android:layout_height="match_parent"
                         android:layout_margin="2dp"
                         android:layout_weight="1"
-                        android:background="#43A047"
+                        android:background="@color/colorGreen"
                         android:gravity="center"
                         android:text="@string/score"
                         android:textColor="@android:color/background_light"
@@ -130,7 +130,7 @@
                         android:layout_height="match_parent"
                         android:layout_margin="2dp"
                         android:layout_weight="2"
-                        android:background="#43A047"
+                        android:background="@color/colorGreen"
                         android:paddingLeft="5dp"
                         android:text="@string/player_1"
                         android:textColor="@android:color/background_light"
@@ -189,7 +189,7 @@
                         android:layout_height="match_parent"
                         android:layout_margin="2dp"
                         android:layout_weight="2"
-                        android:background="#43A047"
+                        android:background="@color/colorGreen"
                         android:paddingLeft="5dp"
                         android:text="@string/player_2"
                         android:textColor="@android:color/background_light"
@@ -250,7 +250,7 @@
                 android:layout_marginBottom="1dp"
                 android:layout_marginRight="1dp"
                 android:layout_weight="1"
-                android:background="#3949AB"
+                android:background="@color/colorField"
                 android:orientation="vertical">
 
                 <TextView
@@ -282,7 +282,7 @@
                 android:layout_marginBottom="1dp"
                 android:layout_marginLeft="1dp"
                 android:layout_weight="1"
-                android:background="#3949AB"
+                android:background="@color/colorField"
                 android:orientation="vertical">
 
                 <TextView
@@ -322,14 +322,14 @@
                 android:layout_marginRight="1dp"
                 android:layout_marginTop="1dp"
                 android:layout_weight="1"
-                android:background="#3949AB"
+                android:background="@color/colorField"
                 android:orientation="vertical">
 
                 <Button
                     android:id="@+id/playerOnePointBtn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#3949AB"
+                    android:background="@color/colorField"
                     android:gravity="center"
                     android:text="@string/point"
                     android:textAllCaps="true"
@@ -344,14 +344,14 @@
                 android:layout_marginLeft="1dp"
                 android:layout_marginTop="1dp"
                 android:layout_weight="1"
-                android:background="#3949AB"
+                android:background="@color/colorField"
                 android:orientation="vertical">
 
                 <Button
                     android:id="@+id/playerTwoPointBtn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#3949AB"
+                    android:background="@color/colorField"
                     android:gravity="center"
                     android:text="@string/point_2"
                     android:textAllCaps="true"
@@ -366,13 +366,13 @@
             android:layout_height="match_parent"
             android:layout_marginTop="2dp"
             android:layout_weight="1"
-            android:background="#3949AB"
+            android:background="@color/colorField"
             android:orientation="horizontal">
             <Button
                 android:id="@+id/resetBtn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#3949AB"
+                android:background="@color/colorField"
                 android:gravity="center"
                 android:text="@string/reset"
                 android:textAllCaps="true"
