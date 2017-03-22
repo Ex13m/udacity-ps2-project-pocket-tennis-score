@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //Object fo work with sound
     private SoundPool mSoundPool;
     AssetManager mAssetManager;
-    int setSound,gameSound,resetSound;
+    int setSound,gameSound,resetSound,playerOneBtnSound,playerTwoBtnSound;
 
 
 
@@ -108,14 +108,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //animation of app tittle
                 startAnimationBtn(playerOnePointBtn);
                 //sound after tap
-                playSound(setSound);
+                playSound(playerOneBtnSound);
                 break;
             case R.id.playerTwoPointBtn:
                 //Toast.makeText(this, "point for Player 2", Toast.LENGTH_SHORT).show();
                 scorePlayerTwo = scorePlayerTwo + 1;
                 displayForPlayerTwo(scorePlayerTwo);
                 startAnimationBtn(playerTwoPointBtn);
-                playSound(gameSound);
+                playSound(playerTwoBtnSound);
                 break;
             case R.id.resetBtn:
                 Toast.makeText(this, "Game was reseted !", Toast.LENGTH_SHORT).show();
@@ -165,6 +165,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 setPlayerOne = setPlayerOne + 1;
                 setPlayerOneTxt.setText(String.valueOf(setPlayerOne));
                 startAnimationGameAndSetTxt(setPlayerOneTxt);
+                playSound(setSound);
                 Toast.makeText(this, "Player 1 win set!", Toast.LENGTH_SHORT).show();
 
                 scorePlayerOne = 0;
@@ -213,6 +214,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 setPlayerOne = setPlayerOne + 1;
                 setPlayerOneTxt.setText(String.valueOf(setPlayerOne));
                 startAnimationGameAndSetTxt(setPlayerOneTxt);
+                playSound(setSound);
                 Toast.makeText(this, "Player 1 win set!", Toast.LENGTH_SHORT).show();
                 scorePlayerOne = 0;
                 scorePlayerTwo = 0;
@@ -266,6 +268,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 setPlayerTwo = setPlayerTwo + 1;
                 setPlayerTwoTxt.setText(String.valueOf(setPlayerTwo));
                 startAnimationGameAndSetTxt(setPlayerTwoTxt);
+                playSound(setSound);
                 Toast.makeText(this, "Player 2 win set!", Toast.LENGTH_SHORT).show();
                 scorePlayerOne = 0;
                 scorePlayerTwo = 0;
@@ -319,7 +322,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 setPlayerTwo = setPlayerTwo + 1;
                 setPlayerTwoTxt.setText(String.valueOf(setPlayerTwo));
                 startAnimationGameAndSetTxt(setPlayerTwoTxt);
-
+                playSound(setSound);
                 Toast.makeText(this, "Player 2 win set!", Toast.LENGTH_SHORT).show();
                 scorePlayerOne = 0;
                 scorePlayerTwo = 0;
@@ -402,10 +405,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //        sound setup
         mSoundPool = new SoundPool(3, AudioManager.STREAM_MUSIC, 0);
         mAssetManager = getAssets();
-        setSound = loadSound("player1.ogg");
-        gameSound = loadSound("player2.ogg");
+        playerOneBtnSound = loadSound("player1.ogg");
+        playerTwoBtnSound = loadSound("player2.ogg");
         resetSound = loadSound("kassa.mp3");
-
+        setSound = loadSound("applause.mp3");
     }
 
 
@@ -442,6 +445,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 //*********************************SOME SOUND*****************************
+    //Tutorial http://ru-code-android.livejournal.com/5268.html
     //Method for control sound file in TennisScore\app\src\main\assets
     private int loadSound(String fileName) {
         AssetFileDescriptor afd = null;
@@ -458,7 +462,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //    Method for play sound
     protected void playSound(int sound) {
         if (sound > 0)
-            mSoundPool.play(sound, 1, 1, 1, 0, 1);
+            mSoundPool.play(sound, 1, 1, 1, 0,1);
+
     }
 //***************************************************************************
 }
