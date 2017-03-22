@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView gamePlayerTwoTxt;
     private TextView setPlayerOneTxt;
     private TextView setPlayerTwoTxt;
-
+    private TextView appName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);*/
 
         setUpBtnAndTxt();
-
+        startAnimationTitleApp(appName);
     }
 
 
@@ -314,39 +314,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startAnimationGameAndSetTxt(setPlayerOneTxt);
         setPlayerTwoTxt.setText("0");
         startAnimationGameAndSetTxt(setPlayerTwoTxt);
+        startAnimationTitleApp(appName);
     }
 
-    //View animation library - https://github.com/daimajia/AndroidViewAnimations
-//Method for animated text (Big Score)
-    void startAnimationBigScore(View view) {
-//without params
-        YoYo.with(Techniques.StandUp).playOn(view);
-
-//with params
-//        YoYo.with(Techniques.FadeInUp)
-//                .duration(900)
-//                .repeat(1)
-//                .playOn(view);
-//
-    }
-
-    //View animation library - https://github.com/daimajia/AndroidViewAnimations
-//Method for animated buttons
-    void startAnimationBtn(View view) {
 
 
-        YoYo.with(Techniques.FadeIn).playOn(view);
 
-
-    }
-
-    void startAnimationGameAndSetTxt(View view) {
-
-
-        YoYo.with(Techniques.BounceInDown).playOn(view);
-
-
-    }
 
 
     //The method searches for objects from by ID and connects them to the implements View.OnClickListener .
@@ -364,6 +337,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         gamePlayerTwoTxt = (TextView) findViewById(R.id.gamePlayerTwoTxt);
         setPlayerOneTxt = (TextView) findViewById(R.id.setPlayerOnwTxt);
         setPlayerTwoTxt = (TextView) findViewById(R.id.setPlayerTwoTxt);
+        appName=(TextView)findViewById(R.id.appName) ;
 
         playerOnePointBtn.setOnClickListener(this);
         playerTwoPointBtn.setOnClickListener(this);
@@ -376,7 +350,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         gamePlayerTwoTxt.setOnClickListener(this);
         setPlayerOneTxt.setOnClickListener(this);
         setPlayerTwoTxt.setOnClickListener(this);
-
     }
+
+
+    //**************************SOME ANIMATIONS***********************
+
+    //View animation library - https://github.com/daimajia/AndroidViewAnimations
+//Method for animated text (Big Score)
+    void startAnimationBigScore(View view) {
+//without params
+        YoYo.with(Techniques.StandUp).playOn(view);
+//with params
+//        YoYo.with(Techniques.FadeInUp)
+//                .duration(900)
+//                .repeat(1)
+//                .playOn(view);
+//
+    }
+
+//Method for animated buttons
+   private void startAnimationBtn(View view) {YoYo.with(Techniques.FadeIn).playOn(view);}
+//Method for animated Game and Set View
+   private void startAnimationGameAndSetTxt(View view) {YoYo.with(Techniques.BounceInDown).playOn(view);}
+    //Method for animated Title
+   private void startAnimationTitleApp(View view) {YoYo.with(Techniques.SlideInUp).playOn(view);}
+//************************************************************************
 
 }
