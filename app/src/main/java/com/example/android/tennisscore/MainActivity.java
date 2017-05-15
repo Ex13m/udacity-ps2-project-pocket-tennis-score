@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.playerTwoPointBtn:
                 //Toast.makeText(this, "point for Player 2", Toast.LENGTH_SHORT).show();
                 scorePlayerTwo = scorePlayerTwo + 1;
-                displayForPlayerTwo(scorePlayerTwo);
+                        displayForPlayerTwo(scorePlayerTwo);
                 startAnimationBtn(playerTwoPointBtn);
                 playSound(playerTwoBtnSound);
                 break;
@@ -348,7 +348,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         scorePlayerOne = 0;
         scorePlayerTwo = 0;
         gamePlayerOne = 0;
-        gamePlayerTwo = 0;
+        gamePlayerTwo = 0   ;
         setPlayerOne = 0;
         setPlayerTwo = 0;
         scoreBigPlayerOneTxt.setText("0");
@@ -416,7 +416,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //View animation library - https://github.com/daimajia/AndroidViewAnimations
 //Method for animated text (Big Score)
-    void startAnimationBigScore(View view) {
+    private void startAnimationBigScore(View view) {
 //without params
         YoYo.with(Techniques.StandUp).playOn(view);
 //with params

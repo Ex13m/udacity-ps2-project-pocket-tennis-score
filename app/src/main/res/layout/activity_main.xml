@@ -368,6 +368,7 @@
             android:layout_weight="1"
             android:background="@color/colorField"
             android:orientation="horizontal">
+
             <Button
                 android:id="@+id/resetBtn"
                 android:layout_width="match_parent"
